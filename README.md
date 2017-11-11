@@ -10,7 +10,7 @@
 <img src="https://raw.githubusercontent.com/mharoot/DrRacket/master/images/DeterministicFiniteStateMachine1.PNG"/>
 </li>
 <li>
-<p> The program  <a href="https://github.com/mharoot/DrRacket/blob/master/DFA/M1.lisp">M1.lisp</a> output is below </p>
+<p> The program  <a href="https://github.com/mharoot/DrRacket/blob/master/DFA/M2.lisp">M2.lisp</a> output is below </p>
 <ul>
 <li>(test1)
 </li><li>=> (q1 q2 q4 q6 q7 q7 accept)</li>
