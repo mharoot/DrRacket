@@ -5,6 +5,6 @@
 </br>
 </br>
 <h3> Determinstic Finite Automata </h3>
-<img src="DeterministicFiniteStateMachine1.PNG">
+<img src="https://raw.githubusercontent.com/mharoot/DrRacket/master/images/DeterministicFiniteStateMachine1.PNG"/>
 
 
