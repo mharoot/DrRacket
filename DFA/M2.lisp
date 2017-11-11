@@ -1,4 +1,4 @@
-;;; Example 10.21 (Figure 10.1)
+;;; Example { w: w1bbbw2 or #2a }
 
 (define simulate
   (lambda (dfa input)
@@ -26,40 +26,6 @@
        trans                                ; same transition function
        (final-states dfa)))))               ; same final states
 
-(define zero-one-even-dfa
- '(q0                                                 ; start state
-   (((q0 0) q2) ((q0 1) q1) ((q1 0) q3) ((q1 1) q0)   ; transition fn
-    ((q2 0) q0) ((q2 1) q3) ((q3 0) q1) ((q3 1) q2))
-   (q0)))                                             ; final states
-
-(define test1
-  (lambda ()
-    (simulate
-     zero-one-even-dfa  ; machine description
-     '(0 1 1 0 1))))    ; input string
-
-(define test2
-  (lambda ()
-    (simulate
-     zero-one-even-dfa  ; machine description
-     '(0 1 0 0 1 0))))  ; input string
-  
-(define w1-bbb-w2-dfa
-  '(q1                                                 ; start state
-   (      ;a          b                                ; transition fn
-     ((q1 0) q2) ((q1 1) q3)                        
-     ((q2 0) q1) ((q2 1) q3)
-     ((q3 0) q1) ((q3 1) q4)
-     ((q4 0) q2) ((q4 1) q5) 
-     ((q5 0) q5) ((q5 1) q5)
-    )
-   (q5)))                                             ; final states
-
-(define test-w1-bbb-w2-dfa
-  (lambda ()
-    (simulate
-     w1-bbb-w2-dfa ; machine description
-     '(1 1 0 1 1 1 0 1 0 1 0 ))))  ; input string 
    
 (define w1-bbb-w2-or-2a-dfa
   '(q1                                                 ; start state
@@ -73,27 +39,47 @@
      ((q7 0) q7) ((q7 1) q7)
     )
    (q1 q3 q5 q7)))                                             ; final states
+   
+(define test1 ; abbb
+  (lambda ()
+    (simulate
+     w1-bbb-w2-or-2a-dfa ; machine description
+     '(0 1 1 1 1))))  ; input string
 
-(define test3
-  (lambda ()
-    (simulate
-     w1-bbb-w2-or-2a-dfa ; machine description
-     '(0 1 1 0 1 0))))  ; input string
-   
-(define test4
-  (lambda ()
-    (simulate
-     w1-bbb-w2-or-2a-dfa ; machine description
-     '(0 1 1 1 ))))  ; input string 
  
-(define test5
+(define test2 ; ababb
   (lambda ()
     (simulate
      w1-bbb-w2-or-2a-dfa ; machine description
-     '(1 1 0 1 1 0 1 1 0 ))))  ; input string 
+     '(0 1 0 1 1 ))))  ; input string 
+
+(define test3 ; bbb
+  (lambda ()
+    (simulate
+     w1-bbb-w2-or-2a-dfa ; machine description
+     '(1 1 1))))  ; input string
    
-(define test6
+(define test4 ; aa
   (lambda ()
     (simulate
      w1-bbb-w2-or-2a-dfa ; machine description
-     '(0 1 1 0 1 1 0 1 1 0 ))))  ; input string 
+     '(1 1 ))))  ; input string 
+ 
+(define test5 ; abbbaa
+  (lambda ()
+    (simulate
+     w1-bbb-w2-or-2a-dfa ; machine description
+     '(0 1 1 1 0 0 ))))  ; input string 
+   
+(define test6 ; abababa
+  (lambda ()
+    (simulate
+     w1-bbb-w2-or-2a-dfa ; machine description
+     '(0 1 0 1 0 1 0 ))))  ; input string 
+
+
+(define test7 ; babbaabababb
+  (lambda ()
+    (simulate
+     w1-bbb-w2-or-2a-dfa ; machine description
+     '(1 0 1 1 0 0 1 0 1 0 1 1))))  ; input string 
